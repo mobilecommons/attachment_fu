@@ -325,7 +325,7 @@ module Technoweenie # :nodoc:
             :filename                 => thumbnail_name_for(file_name_suffix),
             :thumbnail_resize_options => size
           }
-          if defined?(Rails) && Rails::VERSION::MAJOR == 3
+          if thumb.method(:assign_attributes).arity == -2
             # assign_attributes API in Rails 2.3 doesn't take a second argument
             assign_attributes_args << { :without_protection => true }
           end
@@ -436,8 +436,8 @@ module Technoweenie # :nodoc:
         # Write out the temporary data if it is not present
         if temp_data.nil?
           self.temp_data = current_data
-        end 
-        
+        end
+
         self.class.with_image(temp_path, &block)
       end
 
