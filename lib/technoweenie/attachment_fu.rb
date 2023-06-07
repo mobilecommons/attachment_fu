@@ -166,7 +166,7 @@ module Technoweenie # :nodoc:
 
       def load_related_exception?(e) #:nodoc: implementation specific
         case
-        when e.kind_of?(LoadError), e.kind_of?(MissingSourceFile), $!.class.name == "CompilationError"
+        when e.kind_of?(LoadError), $!.class.name == "CompilationError"
           # We can't rescue CompilationError directly, as it is part of the RubyInline library.
           # We must instead rescue RuntimeError, and check the class' name.
           true
