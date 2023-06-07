@@ -30,8 +30,8 @@ module Technoweenie # :nodoc:
           def resize_image(img, size)
             processor = ::RedArtisan::CoreImage::Processor.new(img)
             size = size.first if size.is_a?(Array) && size.length == 1
-            if size.is_a?(Fixnum) || (size.is_a?(Array) && size.first.is_a?(Fixnum))
-              if size.is_a?(Fixnum)
+            if size.is_a?(Integer) || (size.is_a?(Array) && size.first.is_a?(Integer))
+              if size.is_a?(Integer)
                 processor.fit(size)
               else
                 processor.resize(size[0], size[1])

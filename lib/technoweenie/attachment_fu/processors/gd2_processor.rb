@@ -31,8 +31,8 @@ module Technoweenie # :nodoc:
           # Performs the actual resizing operation for a thumbnail
           def resize_image(img, size)
             size = size.first if size.is_a?(Array) && size.length == 1
-            if size.is_a?(Fixnum) || (size.is_a?(Array) && size.first.is_a?(Fixnum))
-              if size.is_a?(Fixnum)
+            if size.is_a?(Integer) || (size.is_a?(Array) && size.first.is_a?(Integer))
+              if size.is_a?(Integer)
                 # Borrowed from image science's #thumbnail method and adapted 
                 # for this.
                 scale = size.to_f / (img.width > img.height ? img.width.to_f : img.height.to_f)
